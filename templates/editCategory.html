@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
+        <link rel=stylesheet type=text/css href="css/style.css">
+    </head>
+    <body>
+        <h1>Edit {{category.name}}</h1>
+
+        <form action={{ url_for('editCategory', category_id=category.id)}} method="POST">
+
+        	<p>Name: </p>
+        	<input type='text' size='30' name='name'>
+        	<br>
+
+        	<input type='submit' value='Edit'>
+        </form>
+    </body>
+</html>

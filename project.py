@@ -25,7 +25,7 @@ CLIENT_ID = json.loads(
 # that is called at the beginning of every function that
 # will create a connection to the database.
 def createConnection():
-    engine = create_engine('sqlite:///category.db')
+    engine = create_engine('postgresql:///category.db')
     Base.metadata.bind = engine
     DBSession = sessionmaker(bind=engine)
     session = DBSession()

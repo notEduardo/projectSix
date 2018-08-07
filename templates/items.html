@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
+		<link rel=stylesheet type=text/css href="css/style.css">
+	</head>
+	<body>
+		<h1>{{category.name}}</h1>
+
+		<div class = 'flash'>
+		    {% with messages = get_flashed_messages() %}
+            
+	            {% if messages %}
+             
+                    <ul>
+                    {% for message in messages %}
+                        <li> <strong> {{ message }} </strong> </li>
+                    {% endfor %}
+                    </ul>
+	            {% endif %}
+            {% endwith %}
+
+        </div>
+		<div class="itemContainer">
+			<a href={{ url_for('newItem', category_id=category.id)}}><p>Add New Item</p></a>
+
+			{% for item in items %}
+			    <a href={{ url_for('oneItem', item_id=item.id, category_id=category.id)}}><p id="item">{{item.name}}</p></a>
+			    <p id="itemDesc">{{item.description}}</p>
+		        <a href={{ url_for('editItem', category_id=category.id, item_id=item.id)}}>Edit | </a>
+		        <a href={{ url_for('deleteItem', category_id=category.id, item_id=item.id)}}>Delete</a>
+            {% endfor %}
+		</div>
+	</body>
+</html>

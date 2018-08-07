@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
+        <link rel=stylesheet type=text/css href="css/style.css">
+    </head>
+    <body>
+        <h1>New Item</h1>
+
+        <form action={{ url_for('newItem', category_id=category_id)}} method="POST">
+
+        	<p>Name: </p>
+            <input type='text' size='30' name='name'>
+            <br>
+            <p>Description: </p>
+            <input type='text' size='250' name='description'>
+
+        	<input type='submit' value='Create'>
+        </form>
+    </body>
+</html>

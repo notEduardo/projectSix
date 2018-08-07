@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
+		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+	</head>
+	<body>
+		<header>
+			<h1 class="title">Categories</h1>
+			{% if loggedIn %}
+				<a href="{{url_for('gdisconnect')}}" id="logout"><p>Logout</p></a>
+			{% else %}
+			    <a href="{{url_for('showLogin')}}" id="login"><p>Login</p></a>
+			{% endif %}
+		</header>
+		
+		<div class = 'flash'>
+		    {% with messages = get_flashed_messages() %}
+            
+	            {% if messages %}
+             
+                    <ul>
+                    {% for message in messages %}
+                        <li> <strong> {{ message }} </strong> </li>
+                    {% endfor %}
+                    </ul>
+	            {% endif %}
+            {% endwith %}
+
+        </div>
+			
+		<div class="container">
+			<a href={{ url_for('newCategory')}}><p>Add New Category</p></a>
+
+			{% for cat in categories %}
+				<a href={{ url_for('showItems', category_id=cat.id)}}>
+				    <p id="cat">{{cat.name}}</p>
+				</a>
+			    <p>{{cat.id}}</p>
+		        <a href={{ url_for('editCategory', category_id=cat.id)}}>Edit</a>
+                <br>
+                <a href={{ url_for('deleteCategory', category_id=cat.id)}}>Delete</a>
+                
+            {% endfor %}
+		</div>
+	</body>
+</html>
